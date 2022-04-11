@@ -67,7 +67,7 @@ echo "=> Tokenizing..."
 for set in $DATASET_NAME; do
     $TOKENIZER -l en < ${NORMALIZED_DATA}/${set}.en-vi.en > ${TOKENIZED_DATA}/${set}.en-vi.en
     $TOKENIZER -l en < ${NORMALIZED_DATA}/${set}.en-ja.en > ${TOKENIZED_DATA}/${set}.en-ja.en
-    python3.6 ${EXPDIR}/preprocess/tokenize-vi.py ${NORMALIZED_DATA}/${set}.vi ${TOKENIZED_DATA}/${set}.vi
+    python3.6 ${EXPDIR}/preprocess/tokenize-vi.py ${NORMALIZED_DATA}/${set}.en-vi.vi ${TOKENIZED_DATA}/${set}.en-vi.vi
 done
 
 cat ${TOKENIZED_DATA}/${set}.en-vi.en ${TOKENIZED_DATA}/${set}.en-ja.en > ${TOKENIZED_DATA}/train.corpus.en
