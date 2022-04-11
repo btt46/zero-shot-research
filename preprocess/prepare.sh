@@ -88,11 +88,8 @@ for set in $DATASET_NAME; do
 done
 
 for set in $DATASET_NAME; do
-    cat ${TRUECASED_DATA}/${set}.en-vi.en ${TRUECASED_DATA}/${set}.en-vi.vi \
-        ${TRUECASED_DATA}/${set}.en-ja.en ${TRUECASED_DATA}/${set}.en-ja.ja > ${TRUECASED_DATA}/train.src
-
-    cat ${TRUECASED_DATA}/${set}.en-vi.vi ${TRUECASED_DATA}/${set}.en-vi.en \
-        ${TRUECASED_DATA}/${set}.en-ja.ja ${TRUECASED_DATA}/${set}.en-ja.en > ${TRUECASED_DATA}/train.tgt
+    cat ${TRUECASED_DATA}/${set}.en-vi.en ${TRUECASED_DATA}/${set}.en-vi.vi ${TRUECASED_DATA}/${set}.en-ja.en ${TRUECASED_DATA}/${set}.en-ja.ja > ${TRUECASED_DATA}/train.src
+    cat ${TRUECASED_DATA}/${set}.en-vi.vi ${TRUECASED_DATA}/${set}.en-vi.en ${TRUECASED_DATA}/${set}.en-ja.ja ${TRUECASED_DATA}/${set}.en-ja.en > ${TRUECASED_DATA}/train.tgt
 done
 
 # learn bpe model with training data
