@@ -78,7 +78,7 @@ echo "Training for English..."
 $TRUECASER_TRAIN --model $DATASET/tmp/truecase.model.en --corpus ${TOKENIZED_DATA}/train.corpus.en
 
 echo "Training for Vietnamese"
-$TRUECASER_TRAIN --model $DATASET/tmp/truecase.model.vi --corpus ${TOKENIZED_DATA}/train.vi
+$TRUECASER_TRAIN --model $DATASET/tmp/truecase.model.vi --corpus ${TOKENIZED_DATA}/train.en-vi.vi
 
 for set in $DATASET_NAME; do
     $TRUECASER --model $DATASET/tmp/truecase.model.en < ${TOKENIZED_DATA}/${set}.en-vi.en > ${TRUECASED_DATA}/${set}.en-vi.en
