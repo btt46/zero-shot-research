@@ -103,7 +103,7 @@ done
 
 # adding tags
 ## train data
-for lang in src tgt; do
+for lang in src; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print "<2vi> " $0}' > $BPE_DATA/train.bpe.${lang}.1
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print "<2en> " $0}' > $BPE_DATA/train.bpe.${lang}.2
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print "<2ja> " $0}' > $BPE_DATA/train.bpe.${lang}.3
@@ -123,6 +123,12 @@ for lang in src tgt; do
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=2537 && NR <=3730 {print "<2ja> " $0}' > $BPE_DATA/test.bpe.${lang}.3
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print "<2en> " $0}' > $BPE_DATA/test.bpe.${lang}.4
     cat $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.2 $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4 > $TAGGED_DATA/test.${lang}
+done
+
+for set in $DATASET_NAME; do
+    for lang in tgt; do
+        cp $BPE_DATA/${set}.bpe.${lang} $TAGGED_DATA/${set}.${lang}
+    done
 done
 
 fairseq-preprocess -s src -t tgt \
