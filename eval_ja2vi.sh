@@ -12,7 +12,7 @@ GPUS=$3
 MODEL_NAME=$4
 MODEL=$PWD/models/${MODEL_NAME}/checkpoint_best.pt
 BIN_DATA=$EXPDIR/data/tmp/bin-data
-TAGGED_DATA=$EXPDIR/data/evaluation/tagged-data
+TAGGED_DATA=$EXPDIR/data/evaluation/tmp/tagged-data
 ########################## Validation dataset #########################################
 
 CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA \
