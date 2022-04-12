@@ -55,7 +55,7 @@ for set in $DATASET_NAME; do
                                                 ${NORMALIZED_DATA}/${set}.en-vi.en
     python3.6 ${EXPDIR}/preprocess/normalize.py ${DATASET}/en-vi.data/${set}.vi \
                                                 ${NORMALIZED_DATA}/${set}.en-vi.vi
-    python3.6 ${EXPDIR}/preprocess/normalize.py ${DATASET}/en-vi.data/${set}.en \
+    python3.6 ${EXPDIR}/preprocess/normalize.py ${DATASET}/en-ja.data/${set}.en \
                                                 ${NORMALIZED_DATA}/${set}.en-ja.en
     python3.6 ${EXPDIR}/preprocess/normalize.py ${DATASET}/en-ja.data/${set}.ja \
                                                 ${NORMALIZED_DATA}/${set}.en-ja.ja
