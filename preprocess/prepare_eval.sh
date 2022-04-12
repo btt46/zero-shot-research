@@ -86,7 +86,7 @@ done
 echo "=> Adding tags"
 
 for set in $DATASET_NAME; do
-    cat $BPE_DATA/${set}.${src} | awk -v tag="<2${tgt}> " '{print a $0}'
+    cat $BPE_DATA/${set}.${src} | awk -v tag="<2${tgt}> " '{print a $0}' > $TAGGED_DATA//${set}.${src}
 done
 
 
