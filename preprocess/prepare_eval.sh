@@ -77,8 +77,16 @@ done
 echo "=> Subword..."
 for set in $DATASET_NAME; do
     for lang in $src $tgt; do
-        subword-nmt apply-bpe -c $EXPDIR/data/tmp/bpe.${BPE_TOKENS}.model < ${TRUECASED_DATA}/${set}.${lang} > $BPE_DATA/${set}.bpe.${lang}
+        subword-nmt apply-bpe -c $EXPDIR/data/tmp/bpe.${BPE_TOKENS}.model < ${TRUECASED_DATA}/${set}.${lang} > $BPE_DATA/${set}.${lang}
     done
+done
+
+# adding tags
+## train data
+echo "=> Adding tags"
+
+for set in $DATASET_NAME; do
+    cat $BPE_DATA/${set}.${src} | awk -v tag="<2${tgt}> " '{print a $0}'
 done
 
 
