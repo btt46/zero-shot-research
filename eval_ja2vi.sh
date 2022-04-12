@@ -8,8 +8,8 @@ DETRUECASER=${SCRIPTS}/recaser/detruecase.perl
 
 src=ja
 tgt=vi
-GPUS=$3
-MODEL_NAME=$4
+GPUS=$1
+MODEL_NAME=$2
 MODEL=$PWD/models/${MODEL_NAME}/checkpoint_best.pt
 BIN_DATA=$EXPDIR/data/tmp/bin-data
 TAGGED_DATA=$EXPDIR/data/evaluation/tmp/tagged-data
