@@ -106,8 +106,8 @@ done
 for lang in src; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print "<2vi> " $0}' > $BPE_DATA/train.bpe.${lang}.1
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print "<2en> " $0}' > $BPE_DATA/train.bpe.${lang}.2
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print "<2ja> " $0}' > $BPE_DATA/train.bpe.${lang}.3
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print "<2en> " $0}' > $BPE_DATA/train.bpe.${lang}.4
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=399951 {print "<2ja> " $0}' > $BPE_DATA/train.bpe.${lang}.3
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=399952 && NR <=533268 {print "<2en> " $0}' > $BPE_DATA/train.bpe.${lang}.4
     cat $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.2 $BPE_DATA/train.bpe.${lang}.3 $BPE_DATA/train.bpe.${lang}.4 > $TAGGED_DATA/train.${lang}
 
     ## validation
