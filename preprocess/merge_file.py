@@ -12,13 +12,14 @@ def merge_file(input_files, output_file):
     count_non=0
     with open(output_file, 'w') as fp:
         while True:
-            for i in range(len(input_files)):
-                if len(contents[i]) > 0 :
-                    fp.write(contents[i][0])
-                    contents[i].pop(0)
-                else:
-                    input_files.pop(i)
-                    contents.pop(i)
+            if len(input_files) > 0:
+                for i in range(len(input_files)):
+                    if len(contents[i]) > 0 :
+                        fp.write(contents[i][0])
+                        contents[i].pop(0)
+                    else:
+                        input_files.pop(i)
+                        contents.pop(i)
             
         fp.close()
 
