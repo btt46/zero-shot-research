@@ -14,14 +14,12 @@ def merge_file(input_files, output_file):
     print(len(contents[2]))
     print(len(contents[3]))
     max_len = max([len(contents[i]) for i in range(len(contents))])
-    print(max_len)
+    
     with open(output_file, 'w') as fp:
-        for i in range(len(contents)):
-            if len(contents[i]) > 0 :
-                fp.write(contents[i][0])
-                contents[i].pop(0)
-            else:
-                contents.pop(i)
+        for i in range(max_len):
+            for j in range(len(contents)):
+                if i < len(contents[j]):
+                    fp.write(contents[j][i])
         
         fp.close()
 
