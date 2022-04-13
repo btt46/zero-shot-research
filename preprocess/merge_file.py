@@ -10,10 +10,12 @@ def merge_file(input_files, output_file):
         fp.close()
     
     print(len(contents))
-    count_non=0
+    
     with open(output_file, 'w') as fp:
         while True:
             if len(input_files) > 0:
+                print(len(contents))
+                print(len(input_files))
                 for i in range(len(input_files)):
                     if len(contents[i]) > 0 :
                         fp.write(contents[i][0])
