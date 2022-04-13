@@ -9,11 +9,18 @@ def merge_file(input_files, output_file):
            contents.append(lines)
         fp.close()
     
+    count_non=0
     with open(output_file, 'w') as fp:
-        for i in range(len(input_files)):
-            if len(contents[i]) > 0 :
-                fp.write(contents[i][0])
-                contents[i].pop(0)
+        while True:
+            for i in range(len(input_files)):
+                if len(contents[i]) > 0 :
+                    fp.write(contents[i][0])
+                    contents[i].pop(0)
+                else:
+                    count_non +=1
+            if count_non == len(input_files):
+                break
+            
         fp.close()
 
 
