@@ -18,7 +18,7 @@ def merge_file(input_files, output_file):
                     contents[i].pop(0)
                 else:
                     contents.pop(i)
-            
+        print(len(contents))   
         fp.close()
 
 
