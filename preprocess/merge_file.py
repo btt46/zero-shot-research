@@ -9,7 +9,7 @@ def merge_file(input_files, output_file):
            contents.append(lines)
         fp.close()
     
-    print(contents)
+    print(len(contents))
     count_non=0
     with open(output_file, 'w') as fp:
         while True:
