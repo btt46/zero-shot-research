@@ -144,7 +144,7 @@ for lang in tgt; do
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1269 && NR <=2536 {print  $0}' > $BPE_DATA/test.bpe.${lang}.2
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=2537 && NR <=3730 {print  $0}' > $BPE_DATA/test.bpe.${lang}.3
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.${lang}.4
-    python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 BPE_DATA/test.bpe.${lang}.3 -o $TAGGED_DATA/test.${lang}
+    python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.3 -o $TAGGED_DATA/test.${lang}
 done
 
 fairseq-preprocess -s src -t tgt \
