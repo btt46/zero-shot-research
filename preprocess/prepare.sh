@@ -152,5 +152,6 @@ fairseq-preprocess -s src -t tgt \
 			--trainpref $TAGGED_DATA/train \
 			--validpref $TAGGED_DATA/valid \
 			--testpref $TAGGED_DATA/test \
+            --joined-dictionary \
 			--workers 32 \
             2>&1 | tee $EXPDIR/logs/preprocess
