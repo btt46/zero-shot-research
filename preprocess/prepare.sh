@@ -8,7 +8,7 @@ TOKENIZER=$SCRIPTS/tokenizer/tokenizer.perl
 CLEAN=$SCRIPTS/training/clean-corpus-n.perl
 TRUECASER_TRAIN=$SCRIPTS/recaser/train-truecaser.perl
 TRUECASER=$SCRIPTS/recaser/truecase.perl
-BPE_TOKENS=20000
+BPE_TOKENS=12000
 
 DATASET=$PWD/data
 DATASET_NAME="train valid test"
@@ -106,8 +106,8 @@ done
 for lang in src; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print "<2vi> " $0}' > $BPE_DATA/train.bpe.${lang}.1
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print "<2en> " $0}' > $BPE_DATA/train.bpe.${lang}.2
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=399951 {print "<2ja> " $0}' > $BPE_DATA/train.bpe.${lang}.3
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=399952 && NR <=533268 {print "<2en> " $0}' > $BPE_DATA/train.bpe.${lang}.4
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print "<2ja> " $0}' > $BPE_DATA/train.bpe.${lang}.3
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print "<2en> " $0}' > $BPE_DATA/train.bpe.${lang}.4
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.3 -o $TAGGED_DATA/train.${lang}
 
     ## validation
@@ -128,8 +128,8 @@ done
 for lang in tgt; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print  $0}' > $BPE_DATA/train.bpe.${lang}.1
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print  $0}' > $BPE_DATA/train.bpe.${lang}.2
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=399951 {print  $0}' > $BPE_DATA/train.bpe.${lang}.3
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=399952 && NR <=533268 {print  $0}' > $BPE_DATA/train.bpe.${lang}.4
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print  $0}' > $BPE_DATA/train.bpe.${lang}.3
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > $BPE_DATA/train.bpe.${lang}.4
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.3 -o $TAGGED_DATA/train.${lang}
 
     ## validation
