@@ -5,7 +5,7 @@ def merge_file(input_files, output_file):
     contents = []
     for file in input_files:
         with open(file,'r') as fp:
-           lines = file.readlines()
+           lines = fp.readlines()
            contents.append(lines)
         fp.close()
     
