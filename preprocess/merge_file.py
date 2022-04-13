@@ -9,10 +9,7 @@ def merge_file(input_files, output_file):
            contents.append(lines)
         fp.close()
     
-    print(len(contents[0]))
-    print(len(contents[1]))
-    print(len(contents[2]))
-    print(len(contents[3]))
+  
     max_len = max([len(contents[i]) for i in range(len(contents))])
     
     with open(output_file, 'w') as fp:
