@@ -49,4 +49,4 @@ $DETRUECASER < ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_rmvbpe.${tgt} > $
 python3.6 $PWD/postprocess/detokenize.py ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_detruecase.${tgt} ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test.${tgt}
 python3.6 $PWD/preprocess/normalize.py ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test.${tgt} ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_normalize.${tgt}
 echo "test" >> ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_result.txt
-perl $PWD/multi-bleu.pl $PWD/data/evaluation/tmp/normalized/test.${tgt} < ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_normalize.${tgt} >> ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_result.txt
+perl $PWD/multi-bleu.pl $PWD/data/evaluation/tmp/normalized/test.${tgt} < ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_normalize.${tgt} >> ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_result.txt
