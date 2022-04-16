@@ -129,10 +129,10 @@ for lang in src; do
 done
 
 for lang in tgt; do
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print "<vi> " $0}' > $BPE_DATA/train.bpe.${lang}.1
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print "<en> " $0}' > $BPE_DATA/train.bpe.${lang}.2
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print "<ja> " $0}' > $BPE_DATA/train.bpe.${lang}.3
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print "<en> " $0}' > $BPE_DATA/train.bpe.${lang}.4
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print $0 "    <vi>"}' > $BPE_DATA/train.bpe.${lang}.1
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print $0 "    <en>"}' > $BPE_DATA/train.bpe.${lang}.2
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print $0 "    <ja>"}' > $BPE_DATA/train.bpe.${lang}.3
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print $0 "    <en>"}' > $BPE_DATA/train.bpe.${lang}.4
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.2 $BPE_DATA/train.bpe.${lang}.3 $BPE_DATA/train.bpe.${lang}.4 -o $TAGGED_DATA/train.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.4 -o $TAGGED_DATA/train.${lang}
 
