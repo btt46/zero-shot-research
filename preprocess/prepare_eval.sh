@@ -85,9 +85,10 @@ done
 ## train data
 # echo "=> Adding tags"
 
-# for set in $DATASET_NAME; do
-#     cat $BPE_DATA/${set}.${src} | awk -v tag="<2${tgt}>" '{print tag " " $0}' > $TAGGED_DATA/${set}.${src}
-# done
+for set in $DATASET_NAME; do
+    # cat $BPE_DATA/${set}.${src} | awk -v tag="<2${tgt}>" '{print tag " " $0}' > $TAGGED_DATA/${set}.${src}
+    cat $BPE_DATA/${set}.${src} | awk -v tag="<2${tgt}>" '{print $0}' > $TAGGED_DATA/${set}.${src}
+done
 
 
 
