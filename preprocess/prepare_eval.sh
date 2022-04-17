@@ -11,7 +11,7 @@ TOKENIZER=$SCRIPTS/tokenizer/tokenizer.perl
 CLEAN=$SCRIPTS/training/clean-corpus-n.perl
 TRUECASER_TRAIN=$SCRIPTS/recaser/train-truecaser.perl
 TRUECASER=$SCRIPTS/recaser/truecase.perl
-BPE_TOKENS=12000
+BPE_TOKENS=30000
 
 DATASET=$PWD/data/evaluation
 DATASET_NAME="valid test"
