@@ -115,7 +115,7 @@ for lang in src; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print  $0}' > $BPE_DATA/train.bpe.en-vi.en
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print   $0}' > $BPE_DATA/train.bpe.en-vi.vi
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print  $0}' > $BPE_DATA/train.bpe.en-ja.en
-    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > BPE_DATA/train.bpe.en-ja.ja
+    cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > $BPE_DATA/train.bpe.en-ja.ja
    
     ## validation
     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=1 && NR <=1553 {print  $0}' > $BPE_DATA/valid.bpe.en-vi.en
