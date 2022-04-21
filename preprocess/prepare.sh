@@ -454,10 +454,10 @@ for lang in tgt; do
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.${lang}.4
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=4925 && NR <=6140 {print "<en> " $0}' > $BPE_DATA/test.bpe.${lang}.5
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=6141 && NR <=7355 {print "<en> " $0}' > $BPE_DATA/test.bpe.${lang}.6
-    python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.2 \
-                                                $BPE_DATA/valid.bpe.${lang}.3 $BPE_DATA/valid.bpe.${lang}.4 \
-                                                $BPE_DATA/valid.bpe.${lang}.5 $BPE_DATA/valid.bpe.${lang}.6 \
-                                                -o $TAGGED_DATA/valid.${lang}
+    python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.2 \
+                                                    $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4 \
+                                                    $BPE_DATA/test.bpe.${lang}.5 $BPE_DATA/test.bpe.${lang}.6 \
+                                                     -o $TAGGED_DATA/test.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.4 -o $TAGGED_DATA/test.${lang}
 done
 
