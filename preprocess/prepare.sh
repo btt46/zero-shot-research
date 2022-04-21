@@ -144,7 +144,7 @@ fairseq-preprocess -s vi -t en \
 			--trainpref $BPE_DATA/train.bpe.en-vi \
 			--validpref $BPE_DATA/valid.bpe.en-vi \
 			--testpref $BPE_DATA/test.bpe.en-vi \
-            --joined-dictionary --tgtdict $BIN_DATA/dict.en.txt \
+            --joined-dictionary --srcdict $BIN_DATA/dict.vi.txt --tgtdict $BIN_DATA/dict.en.txt \
 			--workers 10 \
             2>&1 | tee $EXPDIR/logs/preprocess_vi-en
 
@@ -162,7 +162,7 @@ fairseq-preprocess -s ja -t en \
 			--trainpref $BPE_DATA/train.bpe.en-ja \
 			--validpref $BPE_DATA/valid.bpe.en-ja \
 			--testpref $BPE_DATA/test.bpe.en-ja \
-            --joined-dictionary --tgtdict $BIN_DATA/dict.en.txt \
+            --joined-dictionary --srcdict $BIN_DATA/dict.ja.txt --tgtdict $BIN_DATA/dict.en.txt \
 			--workers 10 \
             2>&1 | tee $EXPDIR/logs/preprocess_ja-en
 
