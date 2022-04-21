@@ -170,7 +170,6 @@ fairseq-preprocess -s en -t ja \
 			--trainpref $BPE_DATA/train.bpe.en-ja \
 			--validpref $BPE_DATA/valid.bpe.en-ja \
 			--testpref $BPE_DATA/test.bpe.en-ja \
-            --joined-dictionary \
             --srcdict $BIN_DATA/dict.en.txt \
 			--workers 10 \
             2>&1 | tee $EXPDIR/logs/preprocess_en-ja
@@ -180,7 +179,6 @@ fairseq-preprocess -s ja -t en \
 			--trainpref $BPE_DATA/train.bpe.ja-en \
 			--validpref $BPE_DATA/valid.bpe.ja-en \
 			--testpref $BPE_DATA/test.bpe.ja-en \
-            --joined-dictionary \
             --tgtdict $BIN_DATA/dict.en.txt  \
             --srcdict $BIN_DATA/dict.ja.txt  \
 			--workers 10 \
