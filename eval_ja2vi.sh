@@ -19,6 +19,7 @@ CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA 
             --input $TAGGED_DATA/valid.${src} \
             --path $MODEL \
             --constraints \
+            --prefix-size "<${tgt}>" \
             --beam 5 | tee ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_trans_result.${tgt}
 
 grep ^H ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_trans_result.${tgt} | cut -f3 > ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_trans.${tgt}
