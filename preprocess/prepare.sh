@@ -128,6 +128,22 @@ for lang in src; do
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1269 && NR <=2536 {print  $0}' > $BPE_DATA/test.bpe.en-vi.vi
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=2537 && NR <=3730 {print  $0}' > $BPE_DATA/test.bpe.en-ja.en
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.en-ja.ja
+
+    cp $BPE_DATA/train.bpe.en-vi.en $BPE_DATA/train.bpe.vi-en.en
+    cp $BPE_DATA/train.bpe.en-vi.vi $BPE_DATA/train.bpe.vi-en.vi
+    cp $BPE_DATA/train.bpe.en-ja.en $BPE_DATA/train.bpe.ja-en.en
+    cp $BPE_DATA/train.bpe.en-ja.ja $BPE_DATA/train.bpe.ja-en.ja
+
+    cp $BPE_DATA/valid.bpe.en-vi.en $BPE_DATA/valid.bpe.vi-en.en
+    cp $BPE_DATA/valid.bpe.en-vi.vi $BPE_DATA/valid.bpe.vi-en.vi
+    cp $BPE_DATA/valid.bpe.en-ja.en $BPE_DATA/valid.bpe.ja-en.en
+    cp $BPE_DATA/valid.bpe.en-ja.ja $BPE_DATA/valid.bpe.ja-en.ja
+
+    cp $BPE_DATA/test.bpe.en-vi.en $BPE_DATA/test.bpe.vi-en.en
+    cp $BPE_DATA/test.bpe.en-vi.vi $BPE_DATA/test.bpe.vi-en.vi
+    cp $BPE_DATA/test.bpe.en-ja.en $BPE_DATA/test.bpe.ja-en.en
+    cp $BPE_DATA/test.bpe.en-ja.ja $BPE_DATA/test.bpe.ja-en.ja
+
 done
 
 fairseq-preprocess -s en -t vi \
@@ -136,15 +152,15 @@ fairseq-preprocess -s en -t vi \
 			--validpref $BPE_DATA/valid.bpe.en-vi \
 			--testpref $BPE_DATA/test.bpe.en-vi \
             # --joined-dictionary  \
-            --srcdict $BIN_DATA/dict.src.txt  --tgtdict $BIN_DATA/dict.tgt.txt \
+            # --srcdict $BIN_DATA/dict.src.txt  --tgtdict $BIN_DATA/dict.tgt.txt \
 			--workers 10 \
             2>&1 | tee $EXPDIR/logs/preprocess_en-vi
 
 fairseq-preprocess -s vi -t en \
 			--destdir $BIN_DATA \
-			--trainpref $BPE_DATA/train.bpe.en-vi \
-			--validpref $BPE_DATA/valid.bpe.en-vi \
-			--testpref $BPE_DATA/test.bpe.en-vi \
+			--trainpref $BPE_DATA/train.bpe.vi-en \
+			--validpref $BPE_DATA/valid.bpe.vi-en \
+			--testpref $BPE_DATA/test.bpe.vi-en \
             --joined-dictionary 
             # --srcdict $BIN_DATA/dict.vi.txt  --tgtdict $BIN_DATA/dict.en.txt \
             --srcdict $BIN_DATA/dict.src.txt  --tgtdict $BIN_DATA/dict.tgt.txt \
@@ -164,9 +180,9 @@ fairseq-preprocess -s en -t ja \
 
 fairseq-preprocess -s ja -t en \
 			--destdir $BIN_DATA \
-			--trainpref $BPE_DATA/train.bpe.en-ja \
-			--validpref $BPE_DATA/valid.bpe.en-ja \
-			--testpref $BPE_DATA/test.bpe.en-ja \
+			--trainpref $BPE_DATA/train.bpe.ja-en \
+			--validpref $BPE_DATA/valid.bpe.ja-en \
+			--testpref $BPE_DATA/test.bpe.ja-en \
             # --joined-dictionary
             # --srcdict $BIN_DATA/dict.ja.txt  --tgtdict $BIN_DATA/dict.en.txt \
              --srcdict $BIN_DATA/dict.src.txt  --tgtdict $BIN_DATA/dict.tgt.txt \
