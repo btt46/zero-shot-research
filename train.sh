@@ -9,7 +9,7 @@ DATASET=$PWD/data
 BIN_DATA=$DATASET/tmp/bin-data
 
 CUDA_VISIBLE_DEVICES=$GPUS fairseq-train $BIN_DATA \
-                    --task multilingual_translation --lang-pairs en-vi, vi-en, en-ja, ja-en \
+                    --task multilingual_translation --lang-pairs "en-vi,vi-en,en-ja,ja-en" \
                     --arch multilingual_transformer_iwslt_de_en \
                     --share-decoder-input-output-embed \
                     --encoder-langtok "tgt" \
