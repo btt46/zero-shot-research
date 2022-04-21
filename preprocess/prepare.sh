@@ -236,7 +236,7 @@ done
 #     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3978 && NR <=4848 {print "<en> " $0}' > $BPE_DATA/valid.bpe.${lang}.4
 #     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.2 $BPE_DATA/valid.bpe.${lang}.3 $BPE_DATA/valid.bpe.${lang}.4  -o $TAGGED_DATA/valid.${lang}
 #     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.4 -o $TAGGED_DATA/valid.${lang}
-7
+
 #     ## test
 #     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1 && NR <=1268 {print "<vi> " $0}' > $BPE_DATA/test.bpe.${lang}.1
 #     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1269 && NR <=2536 {print "<en> " $0}' > $BPE_DATA/test.bpe.${lang}.2
