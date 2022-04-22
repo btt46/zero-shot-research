@@ -15,7 +15,7 @@ BIN_DATA=$EXPDIR/data/tmp/bin-data
 TAGGED_DATA=$EXPDIR/data/evaluation/tmp/tagged-data
 ########################## Validation dataset #########################################
 
-cat  $TAGGED_DATA/valid.${src} | CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA \
+cat  $TAGGED_DATA/valid.${src} | CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-generate $BIN_DATA \
             --path $MODEL \
             --task translation_multi_simple_epoch \
             --source_lang "${src}" \
@@ -40,7 +40,7 @@ perl $PWD/multi-bleu.pl $PWD/data/evaluation/tmp/normalized/valid.${tgt} < ${PWD
 
 ########################## Test dataset #########################################
 
-cat  $TAGGED_DATA/valid.${src} | CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA \
+cat  $TAGGED_DATA/valid.${src} | CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-generate $BIN_DATA \
             --path $MODEL \
             --task translation_multi_simple_epoch \
             --source_lang "${src}" \
