@@ -18,10 +18,15 @@ TAGGED_DATA=$EXPDIR/data/evaluation/tmp/tagged-data
 CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA \
             --input $TAGGED_DATA/valid.${src} \
             --path $MODEL \
-            # --constraints ordered \
-            # --prefix-size "<${tgt}>" \
+            --task translation_multi_simple_epoch
+            --source_lang "${src}" \
+            --target_lang "${tgt}" \
+            --encoder-langtok "tgt" \
+            --decoder-langtok \
+            --lang-pairs "${src}-${tgt}" \
             --beam 5 | tee ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_trans_result.${tgt}
-
+# --constraints ordered \
+            # --prefix-size "<${tgt}>" \
 grep ^H ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_trans_result.${tgt} | cut -f3 > ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_trans.${tgt}
 cat ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_trans.${tgt} | sed -r 's/(@@ )|(@@ ?$)//g' > ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/valid_rmvbpe.${tgt}
 
@@ -39,8 +44,12 @@ perl $PWD/multi-bleu.pl $PWD/data/evaluation/tmp/normalized/valid.${tgt} < ${PWD
 CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA \
             --input $TAGGED_DATA/test.${src} \
             --path $MODEL \
-            # --constraints ordered \
-            # --prefix-size 1 \
+            --task translation_multi_simple_epoch
+            --source_lang "${src}" \
+            --target_lang "${tgt}" \
+            --encoder-langtok "tgt" \
+            --decoder-langtok \
+            --lang-pairs "${src}-${tgt}" \
             --beam 5 | tee ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_trans_result.${tgt}
 
 grep ^H ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_trans_result.${tgt} | cut -f3 > ${PWD}/results/${MODEL_NAME}/${src}2${tgt}/test_trans.${tgt}
