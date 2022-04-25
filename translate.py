@@ -24,7 +24,7 @@ def main(args):
 
     with open(args.output_file, 'w') as fp:
         for line in results:
-            fp.write(' '.join(line.hypotheses[0]))
+            fp.write(' '.join(line.hypotheses[0])+'\n')
 
 if __name__=='__main__':
     parser =  argparse.ArgumentParser()
