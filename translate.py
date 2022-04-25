@@ -19,7 +19,7 @@ def main(args):
 
     results = translator.translate_batch(
         model_input,
-        target_prefix=[[args.stok]],
+        target_prefix=[[args.stok] * len(model_input)],
     )
 
     with open(args.output_file, 'w') as fp:
