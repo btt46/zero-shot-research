@@ -22,11 +22,9 @@ def main(args):
         target_prefix=[[args.stok] for i in range(len(model_input))],
     )
 
-    print(results)
-
     with open(args.output_file, 'w') as fp:
         for line in results:
-            fp.write(' '.join(line))
+            fp.write(' '.join(line.hypotheses[0]))
 
 if __name__=='__main__':
     parser =  argparse.ArgumentParser()
