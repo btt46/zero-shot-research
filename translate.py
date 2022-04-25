@@ -22,9 +22,10 @@ def main(args):
         target_prefix=[[args.stok] for i in range(len(model_input))],
     )
 
+    print(results)
+
     with open(args.output_file, 'w') as fp:
         for line in results:
-            print(' '.join(line))
             fp.write(' '.join(line))
 
 if __name__=='__main__':
