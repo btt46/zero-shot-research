@@ -13,13 +13,13 @@ def get_batch(file):
 def main(args):
     # Get input
     model_input = get_batch(args.input_file)
-
+    print(len(model_input))
     # Initialize model
     translator = ctranslate2.Translator(args.model_path, device="cpu")
 
     results = translator.translate_batch(
         model_input,
-        target_prefix=[[args.stok] * len(model_input)],
+        target_prefix=[[args.stok] for i in range(len(model_input))],
     )
 
     with open(args.output_file, 'w') as fp:
