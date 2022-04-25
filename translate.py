@@ -24,6 +24,7 @@ def main(args):
 
     with open(args.output_file, 'w') as fp:
         for line in results:
+            print(' '.join(line))
             fp.write(' '.join(line))
 
 if __name__=='__main__':
