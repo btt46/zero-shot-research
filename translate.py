@@ -15,7 +15,7 @@ def main(args):
     model_input = get_batch(args.input_file)
 
     # Initialize model
-    translator = ctranslate2.Translator(args.model_path, device="gpu")
+    translator = ctranslate2.Translator(args.model_path, device="cpu")
 
     results = translator.translate_batch(
         model_input,
