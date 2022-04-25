@@ -13,7 +13,7 @@ def get_batch(file):
 def main(args):
     # Get input
     model_input = get_batch(args.input_file)
-    print(len(model_input))
+    
     # Initialize model
     translator = ctranslate2.Translator(args.model_path, device="cpu")
 
@@ -24,7 +24,7 @@ def main(args):
 
     with open(args.output_file, 'w') as fp:
         for line in results:
-            fp.write(line)
+            fp.write(' '.join(line))
 
 if __name__=='__main__':
     parser =  argparse.ArgumentParser()
