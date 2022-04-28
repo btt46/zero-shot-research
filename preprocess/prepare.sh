@@ -457,7 +457,7 @@ done
 
 ####################################################################################################################################
 #### Model5
-for lang src in tgt; do
+for lang in src tgt; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print "<vi> " $0}' > $BPE_DATA/train.bpe.${lang}.1
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print "<en> " $0}' > $BPE_DATA/train.bpe.${lang}.2
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print "<ja> " $0}' > $BPE_DATA/train.bpe.${lang}.3
