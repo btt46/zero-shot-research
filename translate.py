@@ -20,7 +20,7 @@ def main(args):
     results = translator.translate_batch(
         model_input,
         target_prefix=[[args.stok] for i in range(len(model_input))],
-        prefix_bias_beta=0.1,
+        prefix_bias_beta=0.9,
         beam_size=4,
     )
 
