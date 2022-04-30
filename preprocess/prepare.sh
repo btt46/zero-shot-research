@@ -551,8 +551,7 @@ for lang in tgt; do
     cp $BPE_DATA/test.bpe.${lang}.3 cp $BPE_DATA/test.bpe.${lang}.3.2
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print "<en> " $0}' > $BPE_DATA/test.bpe.${lang}.4
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.2 \
-                                                     $BPE_DATA/test.bpe.${lang}.1.2 $BPE_DATA/test.bpe.${lang}.3 \
-                                                      $BPE_DATA/test.bpe.${lang}.4 $BPE_DATA/test.bpe.${lang}.3.2 -o $TAGGED_DATA/test.${lang}
+                                                     $BPE_DATA/test.bpe.${lang}.1.2 $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4 $BPE_DATA/test.bpe.${lang}.3.2 -o $TAGGED_DATA/test.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.4 -o $TAGGED_DATA/test.${lang}
 done
 
