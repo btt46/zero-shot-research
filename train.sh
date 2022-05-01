@@ -16,12 +16,6 @@ CUDA_VISIBLE_DEVICES=$GPUS fairseq-train $BIN_DATA -s ${src} -t ${tgt} \
                     --criterion label_smoothed_cross_entropy --label-smoothing 0.1 \
                     --max-tokens 4096 \
                     --patience 5 \
-                    --eval-bleu \
-                    --eval-bleu-args '{"beam": 5, "max_len_a": 1.2, "max_len_b": 10}' \
-                    --eval-bleu-detok moses \
-                    --eval-bleu-remove-bpe \
-                    --eval-bleu-print-samples \
-                    --best-checkpoint-metric loss --maximize-best-checkpoint-metric \
 					--save-dir $EXPDIR/models/$MODEL_NAME \
 					2>&1 | tee $PWD/logs/${MODEL_NAME}
 
