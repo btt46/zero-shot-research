@@ -10,7 +10,7 @@ src=ja
 tgt=vi
 GPUS=$1
 MODEL_NAME=$2
-MODEL=$PWD/models/${MODEL_NAME}/checkpoint7.pt
+MODEL=$PWD/models/${MODEL_NAME}/checkpoint_best.pt
 BIN_DATA=$EXPDIR/data/tmp/bin-data
 TAGGED_DATA=$EXPDIR/data/evaluation/tmp/tagged-data
 ########################## Validation dataset #########################################
