@@ -10,7 +10,7 @@ INPUT_FILE=$1
 FOLDER=$2
 TAG=$3
 
-cat $INPUT_FILE | sed -r "s/(@@ )|(@@ ?$)//g | ${TAG}" > $FOLDER/rmvbpe.txt
+cat $INPUT_FILE | sed -r 's/(@@ )|(@@ ?$)//g | <vi>' > $FOLDER/rmvbpe.txt
 
 # detruecase
 $DETRUECASER < $FOLDER/rmvbpe.txt > $FOLDER/detruecase.txt
