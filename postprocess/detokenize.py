@@ -9,6 +9,7 @@ def detokenize(input_file, output_file):
     new_lines = []
     for line in lines:
         line = line.replace("_", " ")
+        line = line.replace("<vi>", " ")
         new_lines.append(line)
 
     with open(output_file, 'w',encoding='utf-8') as f:
