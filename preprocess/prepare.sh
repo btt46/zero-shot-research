@@ -774,7 +774,7 @@ done
 
 
 # ####################################################################################################################################
-#### Model9
+#### Model11
 for lang in tgt; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print "<vi> " $0}' > $BPE_DATA/train.bpe.${lang}.1
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print "" $0}' > $BPE_DATA/train.bpe.${lang}.2
