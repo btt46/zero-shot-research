@@ -16,5 +16,5 @@ cat $INPUT_FILE | sed -r 's/(@@ )|(@@ ?$)//g' > $FOLDER/rmvbpe.txt
 $DETRUECASER < $FOLDER/rmvbpe.txt > $FOLDER/detruecase.txt
 
 # detokenize
-python3.6 $PWD/postprocess/detokenize.py $FOLDER/detruecase.txt $FOLDER/detok.txt
+python3.6 $PWD/postprocess/detokenize.py $FOLDER/detruecase.txt $FOLDER/detok.txt $TAG
 python3.6 $PWD/preprocess/normalize.py $FOLDER/detok.txt $FOLDER/output.txt
