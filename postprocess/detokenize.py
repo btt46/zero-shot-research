@@ -17,4 +17,4 @@ def detokenize(input_file, output_file, tag):
         f.close()
 
 if __name__=='__main__':
-    detokenize(sys.argv[1], sys.argv[2], sys.arv[3])
+    detokenize(sys.argv[1], sys.argv[2], sys.argv[3])
