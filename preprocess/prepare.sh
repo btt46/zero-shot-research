@@ -974,8 +974,82 @@ done
 #     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.4 -o $TAGGED_DATA/test.${lang}
 # done
 
+# ####################################################################################################################################
+# #### Model14
+# for lang in src; do
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print  $0}' > $BPE_DATA/train.bpe.${lang}.1
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print  $0}' > $BPE_DATA/train.bpe.${lang}.2
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print  $0}' > $BPE_DATA/train.bpe.${lang}.2.2
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print  $0}' > $BPE_DATA/train.bpe.${lang}.3
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > $BPE_DATA/train.bpe.${lang}.4
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > $BPE_DATA/train.bpe.${lang}.4.2
+#     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.2  \
+#                              $BPE_DATA/train.bpe.${lang}.3 $BPE_DATA/train.bpe.${lang}.4 $BPE_DATA/train.bpe.${lang}.4.2 -o $TAGGED_DATA/train.${lang}
+#     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.4 -o $TAGGED_DATA/train.${lang}
+
+#     ## validation
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=1 && NR <=1553 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.1
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=1554 && NR <=3106 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.2
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=1554 && NR <=3106 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.2.2
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3107 && NR <=3977 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.3
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3978 && NR <=4848 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.4
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3978 && NR <=4848 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.4.2
+#     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.2 \
+#                            $BPE_DATA/valid.bpe.${lang}.3  $BPE_DATA/valid.bpe.${lang}.4 $BPE_DATA/valid.bpe.${lang}.4.2 -o $TAGGED_DATA/valid.${lang}
+#     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.4 -o $TAGGED_DATA/valid.${lang}
+
+#     ## test
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1 && NR <=1268 {print  $0}' > $BPE_DATA/test.bpe.${lang}.1
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1269 && NR <=2536 {print  $0}' > $BPE_DATA/test.bpe.${lang}.2
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1269 && NR <=2536 {print  $0}' > $BPE_DATA/test.bpe.${lang}.2.2
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=2537 && NR <=3730 {print  $0}' > $BPE_DATA/test.bpe.${lang}.3
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.${lang}.4
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.${lang}.4.2
+#     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.2 \
+#                                                    $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4 $BPE_DATA/test.bpe.${lang}.4.2  -o $TAGGED_DATA/test.${lang}
+#     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.4 -o $TAGGED_DATA/test.${lang}
+# done
+
+# for lang in tgt; do
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print "<vi> " $0}' > $BPE_DATA/train.bpe.${lang}.1
+#     cp $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.1.2
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print  $0}' > $BPE_DATA/train.bpe.${lang}.2
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=266635 && NR <=489742 {print "<ja> " $0}' > $BPE_DATA/train.bpe.${lang}.3
+#     cp $BPE_DATA/train.bpe.${lang}.3 $BPE_DATA/train.bpe.${lang}.3.2
+#     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > $BPE_DATA/train.bpe.${lang}.4
+#     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.2 \
+#                                                    $BPE_DATA/train.bpe.${lang}.3 \
+#                                                   $BPE_DATA/train.bpe.${lang}.4 $BPE_DATA/train.bpe.${lang}.3.2  -o $TAGGED_DATA/train.${lang}
+#     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.4 -o $TAGGED_DATA/train.${lang}
+
+#     ## validation
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=1 && NR <=1553 {print "<vi> " $0}' > $BPE_DATA/valid.bpe.${lang}.1
+#     cp $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.1.2
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=1554 && NR <=3106 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.2
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3107 && NR <=3977 {print "<ja> " $0}' > $BPE_DATA/valid.bpe.${lang}.3
+#     cp $BPE_DATA/valid.bpe.${lang}.3 $BPE_DATA/valid.bpe.${lang}.3.2
+#     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3978 && NR <=4848 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.4
+#     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.2 \
+#                                               $BPE_DATA/valid.bpe.${lang}.3 \
+#                                               $BPE_DATA/valid.bpe.${lang}.4 $BPE_DATA/valid.bpe.${lang}.3.2 \
+#                                                          -o $TAGGED_DATA/valid.${lang}
+#     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.4 -o $TAGGED_DATA/valid.${lang}
+
+#     ## test
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1 && NR <=1268 {print "<vi> " $0}' > $BPE_DATA/test.bpe.${lang}.1
+#     cp $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.1.2
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=1269 && NR <=2536 {print  $0}' > $BPE_DATA/test.bpe.${lang}.2
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=2537 && NR <=3730 {print "<ja> " $0}' > $BPE_DATA/test.bpe.${lang}.3
+#     cp $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.3.2
+#     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.${lang}.4
+#     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.2 \
+#                                                      $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4 $BPE_DATA/test.bpe.${lang}.3.2 -o $TAGGED_DATA/test.${lang}
+#     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.4 -o $TAGGED_DATA/test.${lang}
+# done
+
+
 ####################################################################################################################################
-#### Model14
+#### Model15
 for lang in src; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=1 && NR <=133317 {print  $0}' > $BPE_DATA/train.bpe.${lang}.1
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=133318 && NR <=266634 {print  $0}' > $BPE_DATA/train.bpe.${lang}.2
@@ -984,7 +1058,7 @@ for lang in src; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > $BPE_DATA/train.bpe.${lang}.4
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > $BPE_DATA/train.bpe.${lang}.4.2
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.2  \
-                             $BPE_DATA/train.bpe.${lang}.3 $BPE_DATA/train.bpe.${lang}.4 $BPE_DATA/train.bpe.${lang}.4.2 -o $TAGGED_DATA/train.${lang}
+                             $BPE_DATA/train.bpe.${lang}.3 $BPE_DATA/train.bpe.${lang}.4  -o $TAGGED_DATA/train.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.4 -o $TAGGED_DATA/train.${lang}
 
     ## validation
@@ -995,7 +1069,7 @@ for lang in src; do
     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3978 && NR <=4848 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.4
     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3978 && NR <=4848 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.4.2
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.2 \
-                           $BPE_DATA/valid.bpe.${lang}.3  $BPE_DATA/valid.bpe.${lang}.4 $BPE_DATA/valid.bpe.${lang}.4.2 -o $TAGGED_DATA/valid.${lang}
+                           $BPE_DATA/valid.bpe.${lang}.3  $BPE_DATA/valid.bpe.${lang}.4  -o $TAGGED_DATA/valid.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.4 -o $TAGGED_DATA/valid.${lang}
 
     ## test
@@ -1006,7 +1080,7 @@ for lang in src; do
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.${lang}.4
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.${lang}.4.2
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.2 \
-                                                   $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4 $BPE_DATA/test.bpe.${lang}.4.2  -o $TAGGED_DATA/test.${lang}
+                                                   $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4   -o $TAGGED_DATA/test.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.4 -o $TAGGED_DATA/test.${lang}
 done
 
@@ -1019,7 +1093,7 @@ for lang in tgt; do
     cat $BPE_DATA/train.bpe.${lang} | awk 'NR>=489743 && NR <=712850 {print  $0}' > $BPE_DATA/train.bpe.${lang}.4
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.2 \
                                                    $BPE_DATA/train.bpe.${lang}.3 \
-                                                  $BPE_DATA/train.bpe.${lang}.4 $BPE_DATA/train.bpe.${lang}.3.2  -o $TAGGED_DATA/train.${lang}
+                                                  $BPE_DATA/train.bpe.${lang}.4  -o $TAGGED_DATA/train.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/train.bpe.${lang}.1 $BPE_DATA/train.bpe.${lang}.4 -o $TAGGED_DATA/train.${lang}
 
     ## validation
@@ -1031,7 +1105,7 @@ for lang in tgt; do
     cat $BPE_DATA/valid.bpe.${lang} | awk 'NR>=3978 && NR <=4848 {print  $0}' > $BPE_DATA/valid.bpe.${lang}.4
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.2 \
                                               $BPE_DATA/valid.bpe.${lang}.3 \
-                                              $BPE_DATA/valid.bpe.${lang}.4 $BPE_DATA/valid.bpe.${lang}.3.2 \
+                                              $BPE_DATA/valid.bpe.${lang}.4  \
                                                          -o $TAGGED_DATA/valid.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/valid.bpe.${lang}.1 $BPE_DATA/valid.bpe.${lang}.4 -o $TAGGED_DATA/valid.${lang}
 
@@ -1043,9 +1117,10 @@ for lang in tgt; do
     cp $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.3.2
     cat $BPE_DATA/test.bpe.${lang} | awk 'NR>=3731 && NR <=4924 {print  $0}' > $BPE_DATA/test.bpe.${lang}.4
     python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.2 \
-                                                     $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4 $BPE_DATA/test.bpe.${lang}.3.2 -o $TAGGED_DATA/test.${lang}
+                                                     $BPE_DATA/test.bpe.${lang}.3 $BPE_DATA/test.bpe.${lang}.4  -o $TAGGED_DATA/test.${lang}
     # python3.6 $EXPDIR/preprocess/merge_file.py -i $BPE_DATA/test.bpe.${lang}.1 $BPE_DATA/test.bpe.${lang}.4 -o $TAGGED_DATA/test.${lang}
 done
+
 
 
 ####################################################################################################################################
